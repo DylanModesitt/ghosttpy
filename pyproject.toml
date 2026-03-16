@@ -29,6 +29,10 @@ packages = ["src/ghosttpy.py"]
 [dependency-groups]
 dev = ["pytest>=8"]
 
+[tool.pytest.ini_options]
+markers = ["integration: requires a running Ghostty instance"]
+testpaths = ["tests"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
