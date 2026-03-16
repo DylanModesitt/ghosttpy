@@ -224,3 +224,20 @@ String arguments like `"right"`, `"press"`, and `"left button"` are accepted eve
 - `InputAction` -- `press`, `release`
 - `MouseButton` -- `left`, `right`, `middle`
 - `ScrollMomentum` -- `none`, `began`, `changed`, `ended`, `cancelled`, `may_begin`, `stationary`
+
+## Examples
+
+The [`examples/`](examples/) directory contains a few demo programs:
+
+| Script | Description |
+|--------|-------------|
+| [`tile_columns.py`](examples/tile_columns.py) | Tile open windows into equal columns |
+| [`dev_layout.py`](examples/dev_layout.py) | Create a development workspace with splits |
+| [`broadcast.py`](examples/broadcast.py) | Broadcast input to multiple terminal panes |
+| [`window_info.py`](examples/window_info.py) | Print a tree of windows, tabs, and terminals |
+
+Run any example with `--help` for options, e.g.:
+
+```
+python examples/tile_columns.py --columns 3 --gap 10
+```
