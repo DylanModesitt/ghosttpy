@@ -23,6 +23,12 @@ Homepage = "https://github.com/DylanModesitt/ghosttpy"
 Repository = "https://github.com/DylanModesitt/ghosttpy"
 Issues = "https://github.com/DylanModesitt/ghosttpy/issues"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/ghosttpy.py"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
