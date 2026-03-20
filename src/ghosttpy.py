@@ -235,6 +235,15 @@ class Terminal(_Base):
         """Close this terminal."""
         self._app.tell(f"close ({self._specifier})")
 
+    def resize_split(self, direction: SplitDirection | str, amount: int = 1) -> bool:
+        """Resize this split in the given direction by *amount* cells."""
+        direction = SplitDirection(direction)
+        return self.perform(f"resize_split:{direction},{amount}")
+
+    def equalize_splits(self) -> bool:
+        """Equalize all split sizes in this terminal's tab."""
+        return self.perform("equalize_splits")
+
     def perform(self, action: str) -> bool:
         """Perform a Ghostty action string on this terminal."""
         act = _escape(action)
@@ -258,6 +267,10 @@ class Tab(_Base):
     def close(self) -> None:
         """Close this tab."""
         self._app.tell(f"close tab ({self._specifier})")
+
+    def equalize_splits(self) -> bool:
+        """Equalize all split sizes in this tab."""
+        return self.focused_terminal.equalize_splits()
 
 
 class Window(_Base):

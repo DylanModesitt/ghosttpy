@@ -47,7 +47,7 @@ def main() -> None:
     editor.input(f"{args.editor} .")
     editor.send_key("enter")
 
-    editor.perform("equalize_splits")
+    editor.equalize_splits()
 
     if args.maximize:
         w.maximize()

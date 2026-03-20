@@ -74,6 +74,15 @@ below = term.split("down")
 
 Split directions are `"right"`, `"left"`, `"down"`, and `"up"` (or use the `SplitDirection` enum).
 
+Resize or equalize splits:
+
+```python
+term.resize_split("left", 10)   # grow 10 cells to the left
+term.resize_split("down")       # grow 1 cell downward (default)
+term.equalize_splits()          # equalize all splits in the tab
+tab.equalize_splits()           # convenience — delegates to focused terminal
+```
+
 Close any object with `.close()`. Bring a window to the front with `w.activate()`, select a tab with `tab.select()`, or focus a terminal with `term.focus()`.
 
 ## Configuration

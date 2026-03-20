@@ -376,6 +376,43 @@ def test_terminal_perform_false(g: Ghostty, rec: ScriptRecorder) -> None:
     assert t.perform("unknown_action") is False
 
 
+def test_terminal_resize_split(g: Ghostty, rec: ScriptRecorder) -> None:
+    t = Terminal(id="t1", specifier='terminal id "t1"', app=g)
+    rec.respond("true")
+    assert t.resize_split("right", 5) is True
+    assert 'perform action "resize_split:right,5" on (terminal id "t1")' in rec.last
+
+
+def test_terminal_resize_split_default_amount(g: Ghostty, rec: ScriptRecorder) -> None:
+    t = Terminal(id="t1", specifier='terminal id "t1"', app=g)
+    rec.respond("true")
+    t.resize_split("down")
+    assert 'perform action "resize_split:down,1" on (terminal id "t1")' in rec.last
+
+
+def test_terminal_resize_split_string_direction(
+    g: Ghostty, rec: ScriptRecorder
+) -> None:
+    t = Terminal(id="t1", specifier='terminal id "t1"', app=g)
+    rec.respond("true")
+    t.resize_split("left", 3)
+    assert 'perform action "resize_split:left,3" on (terminal id "t1")' in rec.last
+
+
+def test_terminal_equalize_splits(g: Ghostty, rec: ScriptRecorder) -> None:
+    t = Terminal(id="t1", specifier='terminal id "t1"', app=g)
+    rec.respond("true")
+    assert t.equalize_splits() is True
+    assert 'perform action "equalize_splits" on (terminal id "t1")' in rec.last
+
+
+def test_tab_equalize_splits(g: Ghostty, rec: ScriptRecorder) -> None:
+    t = Tab(id="t1", specifier='tab id "t1" of window id "w1"', app=g)
+    rec.respond("term-1", "true")
+    assert t.equalize_splits() is True
+    assert 'perform action "equalize_splits" on (terminal id "term-1")' in rec.last
+
+
 def test_window_get_bounds(g: Ghostty, rec: ScriptRecorder) -> None:
     w = Window(id="w1", specifier='window id "w1"', app=g)
     rec.respond("w1", "100, 200, 800, 500")

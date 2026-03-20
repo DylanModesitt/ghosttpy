@@ -53,7 +53,7 @@ def main() -> None:
             current = current.split("down", **kwargs)
             terminals.append(current)
 
-    first.perform("equalize_splits")
+    first.equalize_splits()
 
     if args.command:
         for t in terminals:

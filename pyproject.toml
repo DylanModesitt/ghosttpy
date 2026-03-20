@@ -1,6 +1,6 @@
 [project]
 name = "ghosttpy"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Python library for scripting Ghostty"
 readme = "README.md"
 license = "MIT"
